@@ -13,7 +13,7 @@ with open('final_model.pkl','rb') as file:
  '''
 COLUMNS = ["Gender","Married","Dependents","Education","Self_Employed","ApplicantIncome","CoapplicantIncome","LoanAmount","Loan_Amount_Term","Credit_History","Property_Area"]
 
-def predict_charges(Gender,Married,Dependents,Education,Self_Employed,ApplicantIncome,CoapplicantIncome,LoanAmount,Loan_Amount_Term,Credit_History,Property_Area):
+def predict_loan(Gender,Married,Dependents,Education,Self_Employed,ApplicantIncome,CoapplicantIncome,LoanAmount,Loan_Amount_Term,Credit_History,Property_Area):
     # Ensure correct types
     input_df = pd.DataFrame({
         "Gender":[Gender],
@@ -85,10 +85,10 @@ inputs = [
 
 #interface
 app = gr.Interface(
-    fn=predict_charges,
+    fn=predict_loan,
     inputs=inputs,
     outputs='text',
-    title='Predicted Loan Status ( 0 = Rejected, 1 = Granted)'
+    title='Predicted Loan Status ( Y = Yes, N = No)'
 )
 #launch
 app.launch()
